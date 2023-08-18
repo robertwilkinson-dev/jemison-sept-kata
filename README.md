@@ -24,6 +24,10 @@ Alternate description of the rules per Wikipedia (http://en.wikipedia.org/wiki/T
 
 This Kata is originally from [coding dojo](https://codingdojo.org/kata/Tennis/)* 
 
+your solution should be in the `solutions/` directory in a folder with your name or initials e.g: `solutions/rob-w/`. 
+
+You can use any language you like, but please include a `README.md` with instructions on how to run your code.
+
 ### ℹ️ Solutions
 
 - Reply to the slack post with your username so you can be added as a collaborator to the repo.
