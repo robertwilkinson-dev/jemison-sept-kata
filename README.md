@@ -24,13 +24,7 @@ Alternate description of the rules per Wikipedia (http://en.wikipedia.org/wiki/T
 
 This Kata is originally from [coding dojo](https://codingdojo.org/kata/Tennis/)* 
 
-your solution should be in the `solutions/` directory in a folder with your name or initials e.g: `solutions/rob-w/`. 
+To play should should fork this repo and add your solution to the `solutions/` directory in a folder with your name or initials e.g: `solutions/rob-w/`. 
+One you're happy with your work you can then raise a PR to merge back into this repo
 
 You can use any language you like, but please include a `README.md` with instructions on how to run your code.
-
-### ℹ️ Solutions
-
-- Reply to the slack post with your username so you can be added as a collaborator to the repo.
-- To submit your solution please clone the repo and create a branch with your name or initials e.g: `git checkout -b rob-w`.  🤌
-- Once you have completed the kata please push your branch for people to see 🙌
-
