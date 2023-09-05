@@ -1,3 +1,23 @@
-.app {
-  background-color: red;
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.scoreboardContainer {
+  width: 90%;
+  height: 90vh;
+  margin: auto;
+}
+
+.labelContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 4rem;
+  font-weight: 600;
+}
+
+.labelContainer {
+  border: 1px solid #999;
 }

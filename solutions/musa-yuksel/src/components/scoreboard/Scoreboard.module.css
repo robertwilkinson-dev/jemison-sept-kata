@@ -1,0 +1,11 @@
+.scoreboardContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  font-size: 3rem;
+  border: 1px solid #999;
+  border-top: none;
+}
+
+.scoreboardContainer :last-child {
+  justify-self: center;
+}

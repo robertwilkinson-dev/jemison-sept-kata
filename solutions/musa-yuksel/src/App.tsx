@@ -14,10 +14,14 @@ function App() {
   };
   const [players, setPlayers] = useState([player1, player2]);
   return (
-    <div className={styles.app}>
+    <section className={styles.scoreboardContainer}>
+      <ul className={styles.labelContainer}>
+        <li>Player</li>
+        <li>Game Score</li>
+      </ul>
       <Scoreboard {...players[0]} />
       <Scoreboard {...players[1]} />
-    </div>
+    </section>
   );
 }
 
