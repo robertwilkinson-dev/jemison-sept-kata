@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
-import { IPlayer, Scoreboard } from './Scoreboard';
+import { Scoreboard } from './Scoreboard';
+import { IPlayer } from '../../interfaces/IPlayer';
 
 describe('Scoreboard', () => {
   const player: IPlayer = {
