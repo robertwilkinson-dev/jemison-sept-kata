@@ -44,7 +44,7 @@ describe('App', () => {
 
     userEvent.click(screen.getByText('Player1 +'));
 
-    expect(screen.getByText('1')).toBeInTheDocument();
+    expect(screen.getByText('15')).toBeInTheDocument();
   });
 
   it('should increment the score of player 2', () => {
@@ -59,6 +59,6 @@ describe('App', () => {
 
     userEvent.click(screen.getByText('Player2 +'));
 
-    expect(screen.getByText('1')).toBeInTheDocument();
+    expect(screen.getByText('15')).toBeInTheDocument();
   });
 });

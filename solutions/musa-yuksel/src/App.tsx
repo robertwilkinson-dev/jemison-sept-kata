@@ -17,14 +17,14 @@ function App() {
   const increasePlayer1Score = () => {
     setPlayers((prevPlayers) => {
       const [player1, player2] = prevPlayers;
-      return [{ ...player1, score: player1.score + 15 }, player2];
+      return [{ ...player1, score: player1.score++ }, player2];
     });
   };
 
   const increasePlayer2Score = () => {
     setPlayers((prevPlayers) => {
       const [player1, player2] = prevPlayers;
-      return [player1, { ...player2, score: player2.score + 15 }];
+      return [player1, { ...player2, score: player2.score++ }];
     });
   };
 
