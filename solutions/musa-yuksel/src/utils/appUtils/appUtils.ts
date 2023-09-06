@@ -11,29 +11,29 @@ export const initialPlayers: IPlayer[] = [
   },
 ];
 
-export const hasPlayer1Advantage = (players: IPlayer[]): boolean => {
+export const hasPlayer1Advantage = (players: IPlayer[]) => {
   const [player1, player2] = players;
   return player1.score >= 4 && player1.score - player2.score === 1;
 };
 
-export const hasPlayer2Advantage = (players: IPlayer[]): boolean => {
+export const hasPlayer2Advantage = (players: IPlayer[]) => {
   const [player1, player2] = players;
   return player2.score >= 4 && player2.score - player1.score === 1;
 };
 
-export const hasPlayer1Won = (players: IPlayer[]): boolean => {
+export const hasPlayer1Won = (players: IPlayer[]) => {
   const [player1, player2] = players;
 
   return player1.score >= 4 && player1.score - player2.score >= 2;
 };
 
-export const hasPlayer2Won = (players: IPlayer[]): boolean => {
+export const hasPlayer2Won = (players: IPlayer[]) => {
   const [player1, player2] = players;
 
   return player2.score >= 4 && player2.score - player1.score >= 2;
 };
 
-export const isGameDeuce = (players: IPlayer[]): boolean => {
+export const isGameDeuce = (players: IPlayer[]) => {
   const [player1, player2] = players;
 
   return (
