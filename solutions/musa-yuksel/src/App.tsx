@@ -1,21 +1,18 @@
 import React from 'react';
 import styles from './App.module.css';
-import { IPlayer } from './interfaces/IPlayer';
 import { Scoreboard } from './components';
+import {
+  hasPlayer1Advantage,
+  hasPlayer1Won,
+  hasPlayer2Advantage,
+  hasPlayer2Won,
+  increasePlayerScore,
+  initialPlayers,
+  isGameDeuce,
+} from './utils';
 
 function App() {
-  const player1: IPlayer = {
-    name: 'Player 1',
-    score: 0,
-  };
-  const player2: IPlayer = {
-    name: 'Player 2',
-    score: 0,
-  };
-  const [players, setPlayers] = React.useState([player1, player2]);
-
-  const isDeuce =
-    players[0].score >= 3 && players[0].score === players[1].score;
+  const [players, setPlayers] = React.useState(initialPlayers);
 
   const [hasPlayerWon, setHasPlayerWon] = React.useState({
     player1: false,
@@ -27,40 +24,40 @@ function App() {
     player2: false,
   });
 
+  const [isDeuce, setIsDeuce] = React.useState(false);
+
   React.useEffect(() => {
-    if (players[0].score >= 4 && players[0].score - players[1].score === 1) {
-      setHasPlayerAdvantage((prev) => ({ player2: false, player1: true }));
-    }
-    if (players[1].score >= 4 && players[1].score - players[0].score === 1) {
-      setHasPlayerAdvantage((prev) => ({ player1: false, player2: true }));
-    }
+    setIsDeuce(isGameDeuce(players));
   }, [players]);
 
   React.useEffect(() => {
-    if (players[0].score >= 4 && players[0].score - players[1].score >= 2) {
-      setHasPlayerWon((prev) => ({ ...prev, player1: true }));
-    }
-    if (players[1].score >= 4 && players[1].score - players[0].score >= 2) {
-      setHasPlayerWon((prev) => ({ ...prev, player2: true }));
-    }
+    setHasPlayerAdvantage({
+      player1: hasPlayer1Advantage(players),
+      player2: hasPlayer2Advantage(players),
+    });
+  }, [players]);
+
+  React.useEffect(() => {
+    setHasPlayerWon({
+      player1: hasPlayer1Won(players),
+      player2: hasPlayer2Won(players),
+    });
   }, [players]);
 
   const increasePlayer1Score = () => {
-    setPlayers((prevPlayers) => {
-      const [player1, player2] = prevPlayers;
-      return [{ ...player1, score: player1.score + 1 }, player2];
-    });
+    const newScores = increasePlayerScore(players, 0);
+
+    setPlayers(newScores);
   };
 
   const increasePlayer2Score = () => {
-    setPlayers((prevPlayers) => {
-      const [player1, player2] = prevPlayers;
-      return [player1, { ...player2, score: player2.score + 1 }];
-    });
+    const newScores = increasePlayerScore(players, 1);
+
+    setPlayers(newScores);
   };
 
   const resetTheMatch = () => {
-    setPlayers([player1, player2]);
+    setPlayers(initialPlayers);
     setHasPlayerWon({ player1: false, player2: false });
     setHasPlayerAdvantage({ player1: false, player2: false });
   };
