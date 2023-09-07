@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './App.module.css';
 import { Button, Scoreboard } from './components';
 import {
@@ -12,31 +12,31 @@ import {
 } from './utils';
 
 function App() {
-  const [players, setPlayers] = React.useState(initialPlayers);
+  const [players, setPlayers] = useState(initialPlayers);
 
-  const [hasPlayerWon, setHasPlayerWon] = React.useState({
+  const [hasPlayerWon, setHasPlayerWon] = useState({
     player1: false,
     player2: false,
   });
 
-  const [hasPlayerAdvantage, setHasPlayerAdvantage] = React.useState({
+  const [hasPlayerAdvantage, setHasPlayerAdvantage] = useState({
     player1: false,
     player2: false,
   });
 
-  const [isDeuce, setIsDeuce] = React.useState(false);
-  React.useEffect(() => {
+  const [isDeuce, setIsDeuce] = useState(false);
+  useEffect(() => {
     setIsDeuce(isGameDeuce(players));
   }, [players]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setHasPlayerAdvantage({
       player1: hasPlayer1Advantage(players),
       player2: hasPlayer2Advantage(players),
     });
   }, [players]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setHasPlayerWon({
       player1: hasPlayer1Won(players),
       player2: hasPlayer2Won(players),
