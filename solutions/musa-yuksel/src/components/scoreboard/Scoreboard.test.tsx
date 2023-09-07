@@ -51,9 +51,9 @@ describe('Scoreboard', () => {
     render(<Scoreboard {...mockScoreboardProps} isDeuce={true} />);
   });
 
-  it('should show score as ADVANTAGE. hasAdvantage=true', () => {
+  it('should show score as ADV. hasAdvantage=true', () => {
     render(<Scoreboard {...mockScoreboardProps} hasAdvantage={true} />);
 
-    expect(screen.getByText('ADVANTAGE')).toBeInTheDocument();
+    expect(screen.getByText('ADV')).toBeInTheDocument();
   });
 });
