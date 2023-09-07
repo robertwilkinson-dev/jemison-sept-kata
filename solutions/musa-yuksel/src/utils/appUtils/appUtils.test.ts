@@ -2,6 +2,7 @@ import {
   hasPlayer1Advantage,
   hasPlayer1Won,
   hasPlayer2Advantage,
+  hasPlayer2Won,
 } from './appUtils';
 
 describe('hasPlayer1Advantage', () => {
@@ -10,7 +11,9 @@ describe('hasPlayer1Advantage', () => {
       { name: 'Player 1', score: 5 },
       { name: 'Player 2', score: 4 },
     ];
+
     const result = hasPlayer1Advantage(players);
+
     expect(result).toBe(true);
   });
 
@@ -19,7 +22,9 @@ describe('hasPlayer1Advantage', () => {
       { name: 'Player 1', score: 3 },
       { name: 'Player 2', score: 3 },
     ];
+
     const result = hasPlayer1Advantage(players);
+
     expect(result).toBe(false);
   });
 
@@ -28,7 +33,9 @@ describe('hasPlayer1Advantage', () => {
       { name: 'Player 1', score: 5 },
       { name: 'Player 2', score: 6 },
     ];
+
     const result = hasPlayer1Advantage(players);
+
     expect(result).toBe(false);
   });
 });
@@ -39,7 +46,9 @@ describe('hasPlayer2Advantage', () => {
       { name: 'Player 1', score: 4 },
       { name: 'Player 2', score: 5 },
     ];
+
     const result = hasPlayer2Advantage(players);
+
     expect(result).toBe(true);
   });
 
@@ -48,7 +57,9 @@ describe('hasPlayer2Advantage', () => {
       { name: 'Player 1', score: 3 },
       { name: 'Player 2', score: 3 },
     ];
+
     const result = hasPlayer2Advantage(players);
+
     expect(result).toBe(false);
   });
 
@@ -57,7 +68,9 @@ describe('hasPlayer2Advantage', () => {
       { name: 'Player 1', score: 6 },
       { name: 'Player 2', score: 5 },
     ];
+
     const result = hasPlayer2Advantage(players);
+
     expect(result).toBe(false);
   });
 });
@@ -68,7 +81,9 @@ describe('hasPlayer1Won', () => {
       { name: 'Player 1', score: 6 },
       { name: 'Player 2', score: 4 },
     ];
+
     const result = hasPlayer1Won(players);
+
     expect(result).toBe(true);
   });
 
@@ -77,16 +92,55 @@ describe('hasPlayer1Won', () => {
       { name: 'Player 1', score: 5 },
       { name: 'Player 2', score: 4 },
     ];
+
     const result = hasPlayer1Won(players);
+
     expect(result).toBe(false);
   });
 
-  it('should return false when player 2 won. Score:6-4', () => {
+  it('should return false when player 2 won. Score:4-6', () => {
     const players = [
       { name: 'Player 1', score: 4 },
       { name: 'Player 2', score: 6 },
     ];
+
     const result = hasPlayer1Won(players);
+
+    expect(result).toBe(false);
+  });
+});
+
+describe('hasPlayer2Won', () => {
+  it('should return true when player 2 has won. Score:4-6', () => {
+    const players = [
+      { name: 'Player 1', score: 4 },
+      { name: 'Player 2', score: 6 },
+    ];
+
+    const result = hasPlayer2Won(players);
+
+    expect(result).toBe(true);
+  });
+
+  it('should return false when player 2 has advantages. Score:4-5', () => {
+    const players = [
+      { name: 'Player 1', score: 4 },
+      { name: 'Player 2', score: 5 },
+    ];
+
+    const result = hasPlayer2Won(players);
+
+    expect(result).toBe(false);
+  });
+
+  it('should return false when player 1 won. Score:6-4', () => {
+    const players = [
+      { name: 'Player 1', score: 6 },
+      { name: 'Player 2', score: 4 },
+    ];
+
+    const result = hasPlayer2Won(players);
+
     expect(result).toBe(false);
   });
 });
