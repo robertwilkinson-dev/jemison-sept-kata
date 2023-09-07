@@ -1,14 +1,17 @@
 import React, { type FC } from 'react';
 import styles from './Button.module.css';
+import { IButtonProps } from '../../interfaces';
 
-export interface IButtonProps {
-  onClick: () => void;
-  text: string;
-}
-
-export const Button: FC<IButtonProps> = ({ text, onClick }) => {
+export const Button: FC<IButtonProps> = ({
+  text,
+  onClick,
+  styleClass = '',
+}) => {
   return (
-    <button className={styles.button} onClick={onClick}>
+    <button
+      className={`${styles.button} ${styles[styleClass]}`}
+      onClick={onClick}
+    >
       {text}
     </button>
   );

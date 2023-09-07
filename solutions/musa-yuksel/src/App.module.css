@@ -4,20 +4,12 @@ ul {
   margin: 0;
 }
 
-.scoreboardContainer {
-  width: 90%;
-  height: 90vh;
+.appContainer {
+  max-width: 400px;
   margin: auto;
-}
-
-.labelContainer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 4rem;
-  font-weight: 600;
-}
-
-.labelContainer {
-  border: 1px solid #999;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+  gap: 1px;
+  padding: 3rem 0;
 }

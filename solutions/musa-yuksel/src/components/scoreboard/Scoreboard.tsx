@@ -17,11 +17,13 @@ export const Scoreboard: FC<IScoreboard> = ({
     : isDeuce
     ? 'DEUCE'
     : hasAdvantage
-    ? 'ADVANTAGE'
+    ? 'ADV'
     : boardScore;
 
   return (
-    <ul className={styles.scoreboardContainer}>
+    <ul
+      className={`${styles.scoreboardContainer} ${hasWon ? styles.winner : ''}`}
+    >
       <li>{name}</li>
       <li>{formattedBoardText}</li>
     </ul>

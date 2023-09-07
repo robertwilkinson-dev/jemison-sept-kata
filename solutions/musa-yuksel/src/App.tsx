@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './App.module.css';
-import { Scoreboard } from './components';
+import { Button, Scoreboard } from './components';
 import {
   hasPlayer1Advantage,
   hasPlayer1Won,
@@ -25,7 +25,6 @@ function App() {
   });
 
   const [isDeuce, setIsDeuce] = React.useState(false);
-
   React.useEffect(() => {
     setIsDeuce(isGameDeuce(players));
   }, [players]);
@@ -63,12 +62,7 @@ function App() {
   };
 
   return (
-    <section className={styles.scoreboardContainer}>
-      <ul className={styles.labelContainer}>
-        <li>Player</li>
-        <li>Game Score</li>
-      </ul>
-
+    <section className={styles.appContainer}>
       <Scoreboard
         {...players[0]}
         isDeuce={isDeuce}
@@ -82,16 +76,18 @@ function App() {
         hasWon={hasPlayerWon.player2}
       />
 
-      <div>
-        {hasPlayerWon.player1 || hasPlayerWon.player2 ? (
-          <button onClick={resetTheMatch}>NEW MATCH </button>
-        ) : (
-          <>
-            <button onClick={increasePlayer1Score}>Player1 +</button>
-            <button onClick={increasePlayer2Score}>Player2 +</button>
-          </>
-        )}
-      </div>
+      {hasPlayerWon.player1 || hasPlayerWon.player2 ? (
+        <Button
+          styleClass="newMatchButton"
+          text="NEW MATCH"
+          onClick={resetTheMatch}
+        />
+      ) : (
+        <>
+          <Button text="Player1 +" onClick={increasePlayer1Score} />
+          <Button text="Player2 +" onClick={increasePlayer2Score} />
+        </>
+      )}
     </section>
   );
 }
