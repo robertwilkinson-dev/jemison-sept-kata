@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { Scoreboard } from './Scoreboard';
-import { IPlayer, IScoreboard } from '../../interfaces';
+import { IScoreboard } from '../../interfaces';
 
 describe('Scoreboard', () => {
   const mockScoreboardProps: IScoreboard = {
