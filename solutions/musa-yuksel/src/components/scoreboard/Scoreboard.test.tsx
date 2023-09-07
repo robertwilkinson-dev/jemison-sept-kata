@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { Scoreboard } from './Scoreboard';
-import { IPlayer } from '../../interfaces/IPlayer';
+import { IPlayer } from '../../interfaces';
+// import { IPlayer } from '../../interfaces/IPlayer';
 
 describe('Scoreboard', () => {
   const player: IPlayer = {
@@ -9,14 +10,28 @@ describe('Scoreboard', () => {
   };
 
   it('should show the player name', () => {
-    render(<Scoreboard {...player} />);
+    render(
+      <Scoreboard
+        {...player}
+        isDeuce={false}
+        hasWon={false}
+        hasAdvantage={false}
+      />
+    );
 
     expect(screen.getByText(player.name)).toBeInTheDocument();
   });
 
-  it('should show the player score', () => {
-    render(<Scoreboard {...player} />);
+  it('should show score as LOVE. Score:0', () => {
+    render(
+      <Scoreboard
+        {...player}
+        isDeuce={false}
+        hasWon={false}
+        hasAdvantage={false}
+      />
+    );
 
-    expect(screen.getByText(player.score)).toBeInTheDocument();
+    expect(screen.getByText('LOVE')).toBeInTheDocument();
   });
 });
