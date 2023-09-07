@@ -1,14 +1,9 @@
 import React, { type FC } from 'react';
 import { IPlayer } from '../../interfaces/IPlayer';
 import styles from './Scoreboard.module.css';
+import { IScoreboard } from '../../interfaces';
 
-interface ScoreboardProps extends IPlayer {
-  isDeuce: boolean;
-  hasWon: boolean;
-  hasAdvantage: boolean;
-}
-
-export const Scoreboard: FC<ScoreboardProps> = ({
+export const Scoreboard: FC<IScoreboard> = ({
   name,
   score,
   isDeuce,
@@ -27,7 +22,7 @@ export const Scoreboard: FC<ScoreboardProps> = ({
           : isDeuce
           ? 'DEUCE'
           : hasAdvantage
-          ? 'ADV'
+          ? 'ADVANTAGE'
           : boardScore
       }`}</li>
     </ul>

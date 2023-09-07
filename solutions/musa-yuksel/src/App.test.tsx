@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from './App';
-import { IPlayer } from './interfaces/IPlayer';
+import { IPlayer } from './interfaces';
 
 jest.mock('react', () => ({
   ...jest.requireActual('react'),
