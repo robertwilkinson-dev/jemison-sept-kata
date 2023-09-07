@@ -1,4 +1,5 @@
 import React, { type FC } from 'react';
+import styles from './Button.module.css';
 
 export interface IButtonProps {
   onClick: () => void;
@@ -6,5 +7,9 @@ export interface IButtonProps {
 }
 
 export const Button: FC<IButtonProps> = ({ text, onClick }) => {
-  return <button onClick={onClick}>{text}</button>;
+  return (
+    <button className={styles.button} onClick={onClick}>
+      {text}
+    </button>
+  );
 };
