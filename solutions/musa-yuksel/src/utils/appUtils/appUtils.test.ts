@@ -3,6 +3,7 @@ import {
   hasPlayer1Won,
   hasPlayer2Advantage,
   hasPlayer2Won,
+  isGameDeuce,
 } from './appUtils';
 
 describe('hasPlayer1Advantage', () => {
@@ -144,3 +145,34 @@ describe('hasPlayer2Won', () => {
     expect(result).toBe(false);
   });
 });
+
+describe('isGameDeuce', () => {
+  it('should return true when score is 3-3', () => {
+    const players = [
+      { name: 'Player 1', score: 3 },
+      { name: 'Player 2', score: 3 },
+    ];
+
+    const result = isGameDeuce(players);
+
+    expect(result).toBe(true);
+  });
+
+  it('should return false when score is 4-3', () => {
+    const players = [
+      { name: 'Player 1', score: 4 },
+      { name: 'Player 2', score: 3 },
+    ];
+
+    const result = isGameDeuce(players);
+
+    expect(result).toBe(false);
+  });
+});
+// export const isGameDeuce = (players: IPlayer[]) => {
+//     const [player1, player2] = players;
+
+//     return (
+//       player1.score >= 3 && player2.score >= 3 && player1.score === player2.score
+//     );
+//   };
