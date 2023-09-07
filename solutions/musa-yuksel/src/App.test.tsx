@@ -1,22 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from './App';
-import { IPlayer } from './interfaces';
 
 describe('App', () => {
-  it('should call the Scoreboard with players', () => {
-    // (useState as jest.Mock).mockReturnValueOnce([
-    //   [mockPlayer1, mockPlayer2],
-    //   mockSetState,
-    // ]);
+  const clickMultipleTimes = (button: HTMLElement, times: number) => {
+    for (let i = 0; i < times; i++) {
+      userEvent.click(button);
+    }
+  };
 
+  it('should call the Scoreboard with players', () => {
     render(<App />);
+
     expect(screen.getByText('Player 1')).toBeInTheDocument();
     expect(screen.getByText('Player 2')).toBeInTheDocument();
-
-    // expect(screen.getByText(mockPlayer1.name)).toBeInTheDocument();
-    // expect(screen.getByText(mockPlayer2.name)).toBeInTheDocument();
   });
 
   it('should increment the score of player 1', () => {
@@ -24,7 +22,8 @@ describe('App', () => {
     // before the click
     expect(screen.queryByText('15')).not.toBeInTheDocument();
 
-    userEvent.click(screen.getByText('Player1 +'));
+    const player1Button = screen.getByText('Player1 +');
+    clickMultipleTimes(player1Button, 1);
 
     expect(screen.getByText('15')).toBeInTheDocument();
   });
@@ -35,13 +34,44 @@ describe('App', () => {
     expect(screen.queryByText('15')).not.toBeInTheDocument();
 
     const player2Button = screen.getByText('Player2 +');
-    userEvent.click(player2Button);
+    clickMultipleTimes(player2Button, 1);
 
     expect(screen.getByText('15')).toBeInTheDocument();
 
-    userEvent.click(player2Button);
+    clickMultipleTimes(player2Button, 1);
 
     expect(screen.getByText('30')).toBeInTheDocument();
+  });
+
+  it('should show the DEUCE text', () => {
+    render(<App />);
+
+    const player1Button = screen.getByText('Player1 +');
+    const player2Button = screen.getByText('Player2 +');
+
+    // each player should score to 40
+    clickMultipleTimes(player1Button, 3);
+    clickMultipleTimes(player2Button, 3);
+
+    const deuceText = screen.getAllByText('DEUCE');
+    expect(deuceText.length).toBe(2);
+  });
+
+  it('should show the ADV text', () => {
+    render(<App />);
+
+    const player1Button = screen.getByText('Player1 +');
+    const player2Button = screen.getByText('Player2 +');
+
+    // each player should score to 40
+    clickMultipleTimes(player1Button, 3);
+    clickMultipleTimes(player2Button, 3);
+
+    // player 1 should score again
+    clickMultipleTimes(player1Button, 1);
+
+    const advText = screen.getAllByText('ADV');
+    expect(advText.length).toBe(1);
   });
 
   it('should reset the match', () => {
@@ -49,10 +79,7 @@ describe('App', () => {
 
     const player2Button = screen.getByText('Player2 +');
     // click 4 times
-    userEvent.click(player2Button);
-    userEvent.click(player2Button);
-    userEvent.click(player2Button);
-    userEvent.click(player2Button);
+    clickMultipleTimes(player2Button, 4);
 
     expect(screen.getByText('WINNER')).toBeInTheDocument();
     expect(screen.getByText('NEW MATCH')).toBeInTheDocument();
