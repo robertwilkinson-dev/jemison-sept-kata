@@ -1,0 +1,25 @@
+.button {
+  background-color: #304c76;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1rem;
+  margin: 0.5rem 0.25rem;
+  padding: 1rem 2rem;
+  text-align: center;
+  text-decoration: none;
+  transition-duration: all 0.4s ease;
+}
+
+.button:hover {
+  background-color: #4c71b6;
+}
+
+.button.newMatchButton {
+  background-color: #7dfd67;
+  color: #333;
+  font-weight: 600;
+  grid-column: 1/3;
+}

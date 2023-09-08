@@ -1,0 +1,15 @@
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.appContainer {
+  max-width: 400px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+  gap: 1px;
+  padding: 3rem 0;
+}
