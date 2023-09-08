@@ -11,10 +11,8 @@ You can find a live demo of the Tennis Scoring application [here](https://septem
 To set up the project, you can use either `yarn` or `npm`. Make sure you have either Yarn or npm installed on your system.
 
 ```shell
-# Using Yarn
 yarn
-
-# Using npm
+#OR
 npm install
 ```
 
@@ -23,14 +21,10 @@ npm install
 To start the project, you can use the following commands:
 
 ```shell
-# Using Yarn
 yarn start
-
-# Using npm
+# OR
 npm start
 ```
-
-This will launch the Tennis Scoring application and make it accessible in your local development environment.
 
 ## Testing
 
@@ -44,8 +38,4 @@ yarn test
 npm run test
 ```
 
-These commands will execute the test suite and provide feedback on the performance and correctness of the Tennis Scoring implementation.
-
-If you have any questions or need further assistance, please don't hesitate to reach out.
-
-Happy coding!
+### Happy coding! :heart:
