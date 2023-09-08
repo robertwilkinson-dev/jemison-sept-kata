@@ -8,12 +8,12 @@ You can find a live demo of the Tennis Scoring application [here](https://septem
 
 ## Installation
 
-To set up the project, you can use either `yarn` or `npm`. Make sure you have either Yarn or npm installed on your system.
+Make sure you have either Yarn or npm installed on your system.
 
 ```shell
 yarn
 #OR
-npm install
+npm i
 ```
 
 ## Getting Started
@@ -31,10 +31,8 @@ npm start
 To run the tests for this project, you can use the following commands:
 
 ```shell
-# Using Yarn
 yarn test
-
-# Using npm
+# OR
 npm run test
 ```
 
